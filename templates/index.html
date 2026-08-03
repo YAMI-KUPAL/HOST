@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>YAMI HOSTING - Free Python Bot Hosting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,sans-serif;background:#08090d;color:#e4e8ee;min-height:100vh;min-height:100dvh}
+        nav{position:sticky;top:0;z-index:100;background:rgba(8,9,13,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
+        nav .brand{font-size:18px;font-weight:800;color:#fff;display:flex;align-items:center;gap:8px}
+        nav .brand i{color:#4f8ff7;font-size:20px}
+        nav .nav-links{display:flex;gap:8px;align-items:center}
+        nav .nav-links a{color:#8b8fa3;text-decoration:none;font-size:13px;font-weight:500;padding:7px 14px;border-radius:8px;transition:all .15s}
+        nav .nav-links a:hover{color:#e4e8ee;background:rgba(255,255,255,0.06)}
+        nav .nav-links .btn-sign{background:#4f8ff7;color:#fff;font-weight:600}
+        .hero{padding:60px 20px 40px;text-align:center;background:radial-gradient(ellipse 60% 50% at 50% -20%,rgba(79,143,247,0.12),transparent)}
+        .hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+        .hero h1 span{background:linear-gradient(135deg,#4f8ff7,#7c5cfc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero p{color:#8b8fa3;font-size:15px;max-width:520px;margin:0 auto 28px;line-height:1.7}
+        .hero .hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+        .btn{padding:12px 26px;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .15s;font-family:inherit;border:none}
+        .btn-primary{background:#4f8ff7;color:#fff}.btn-primary:hover{opacity:0.9;transform:translateY(-1px)}
+        .btn-outline{background:rgba(255,255,255,0.05);color:#e4e8ee;border:1px solid rgba(255,255,255,0.12)}
+        .btn-outline:hover{background:rgba(255,255,255,0.10)}
+        .stats-bar{display:flex;justify-content:center;gap:clamp(16px,4vw,48px);padding:24px 20px;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);flex-wrap:wrap}
+        .stats-bar .stat{text-align:center}.stats-bar .stat .num{font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff}
+        .stats-bar .stat .lbl{font-size:11px;color:#8b8fa3;margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+        section{padding:48px 20px;max-width:1100px;margin:0 auto}
+        section h2{font-size:clamp(22px,3.5vw,28px);font-weight:700;text-align:center;margin-bottom:8px;letter-spacing:-0.5px}
+        section .sub{color:#8b8fa3;text-align:center;font-size:14px;margin-bottom:36px}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+        .feat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:24px;transition:all .2s}
+        .feat-card:hover{background:rgba(255,255,255,0.05)}
+        .feat-card .fc-icon{font-size:22px;color:#4f8ff7;margin-bottom:14px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(79,143,247,0.12);border-radius:10px}
+        .feat-card h3{font-size:15px;font-weight:700;margin-bottom:6px;color:#fff}
+        .feat-card p{font-size:13px;color:#8b8fa3;line-height:1.65}
+        .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+        .plan-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:28px 24px;text-align:center;position:relative}
+        .plan-card.popular{border-color:rgba(79,143,247,0.3);background:rgba(79,143,247,0.06)}
+        .plan-card.popular::before{content:'POPULAR';position:absolute;top:12px;right:12px;background:#4f8ff7;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:6px}
+        .plan-card h3{font-size:16px;font-weight:700;color:#fff}
+        .plan-card .price{font-size:28px;font-weight:800;color:#4f8ff7;margin:12px 0 4px}
+        .plan-card .price span{font-size:13px;font-weight:400;color:#8b8fa3}
+        .plan-card .plan-feats{list-style:none;margin:16px 0 20px;text-align:left}
+        .plan-card .plan-feats li{font-size:13px;color:#8b8fa3;padding:6px 0;display:flex;align-items:center;gap:8px}
+        .plan-card .plan-feats li i{color:#4f8ff7;font-size:11px;width:16px}
+        .plan-card .btn{width:100%;justify-content:center}
+        .tech-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+        .tech-tag{padding:8px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;font-size:12px;font-weight:500;color:#e4e8ee;display:flex;align-items:center;gap:6px}
+        .tech-tag i{color:#4f8ff7}
+        footer{border-top:1px solid rgba(255,255,255,0.06);padding:24px 20px;text-align:center}
+        footer p{color:#8b8fa3;font-size:12px}footer a{color:#4f8ff7;text-decoration:none}
+        @media(max-width:600px){nav{padding:0 14px}.hero{padding:40px 14px 30px}section{padding:36px 14px}}
+    </style>
+</head>
+<body>
+<nav><div class="brand"><i class="fas fa-cube"></i> YAMI HOSTING</div><div class="nav-links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="/login" class="btn-sign">Sign In</a></div></nav>
+<section class="hero"><h1>Free <span>Python Bot</span> Hosting</h1><p>Deploy your Discord bots, Telegram bots, and Python apps in seconds. 24/7 uptime, no credit card required, with full console access and file management.</p><div class="hero-btns"><a href="/signup" class="btn btn-primary"><i class="fas fa-rocket"></i> Get Started Free</a><a href="#features" class="btn btn-outline"><i class="fas fa-arrow-down"></i> See Features</a></div></section>
+<div class="stats-bar"><div class="stat"><div class="num">24/7</div><div class="lbl">Uptime</div></div><div class="stat"><div class="num"><i class="fab fa-python" style="color:#4f8ff7"></i></div><div class="lbl">Python 3</div></div><div class="stat"><div class="num">Free</div><div class="lbl">Forever</div></div><div class="stat"><div class="num"><i class="fas fa-bolt" style="color:#4f8ff7"></i></div><div class="lbl">SSD NVMe</div></div></div>
+<section id="features"><h2>Everything You Need</h2><p class="sub">Professional hosting built for Python developers and bot creators.</p><div class="features-grid">
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-terminal"></i></div><h3>Web Console</h3><p>Full terminal access directly in your browser. Run commands, install packages, and manage your bot in real-time.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-folder-tree"></i></div><h3>File Manager</h3><p>Upload, edit, rename, and organize files. Create folders, zip/unzip, and manage your project structure.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-database"></i></div><h3>Databases</h3><p>Create and manage MySQL databases for your applications. Connect your bots to persistent storage.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-shield-halved"></i></div><h3>Backups</h3><p>Create snapshots of your server files. Restore anytime with one click. Your data stays safe.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-robot"></i></div><h3>Discord Bots</h3><p>Run Discord.py bots 24/7. Pre-installed discord.py with full WebSocket support.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fab fa-telegram"></i></div><h3>Telegram Bots</h3><p>Host Telegram bots with python-telegram-bot pre-installed. Full async support.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-rocket"></i></div><h3>One-Click Start</h3><p>Run your bot with python3 bot.py, main.py, or any Python file. Instant startup.</p></div>
+<div class="feat-card"><div class="fc-icon"><i class="fas fa-mobile-screen"></i></div><h3>Mobile Ready</h3><p>Fully responsive dashboard optimized for mobile. Manage servers from any device.</p></div>
+</div></section>
+<section id="tech"><h2>Supported Technologies</h2><p class="sub">Everything you need to run your Python projects, pre-installed.</p><div class="tech-list">
+<div class="tech-tag"><i class="fab fa-python"></i> Python 3</div><div class="tech-tag"><i class="fas fa-comment"></i> discord.py</div><div class="tech-tag"><i class="fab fa-telegram"></i> python-telegram-bot</div><div class="tech-tag"><i class="fas fa-globe"></i> Flask</div><div class="tech-tag"><i class="fas fa-plug"></i> WebSockets</div><div class="tech-tag"><i class="fas fa-database"></i> SQLite</div><div class="tech-tag"><i class="fas fa-box"></i> pip packages</div><div class="tech-tag"><i class="fas fa-code"></i> asyncio</div>
+</div></section>
+<section id="pricing"><h2>Simple Pricing</h2><p class="sub">Start free. Upgrade when you need more power.</p><div class="plans-grid">
+<div class="plan-card"><h3>Free</h3><div class="price">$0<span>/mo</span></div><ul class="plan-feats"><li><i class="fas fa-check"></i> 1 Server</li><li><i class="fas fa-check"></i> 512 MB RAM</li><li><i class="fas fa-check"></i> 1 GB Storage</li><li><i class="fas fa-check"></i> Web Console</li><li><i class="fas fa-check"></i> File Manager</li><li><i class="fas fa-check"></i> 24/7 Uptime</li></ul><a href="/signup" class="btn btn-outline">Get Started</a></div>
+<div class="plan-card popular"><h3>Pro</h3><div class="price">$5<span>/mo</span></div><ul class="plan-feats"><li><i class="fas fa-check"></i> 5 Servers</li><li><i class="fas fa-check"></i> 2 GB RAM</li><li><i class="fas fa-check"></i> 5 GB Storage</li><li><i class="fas fa-check"></i> MySQL Databases</li><li><i class="fas fa-check"></i> Backups</li><li><i class="fas fa-check"></i> Priority Support</li></ul><a href="/signup" class="btn btn-primary">Upgrade Now</a></div>
+<div class="plan-card"><h3>Unlimited</h3><div class="price">$10<span>/mo</span></div><ul class="plan-feats"><li><i class="fas fa-check"></i> Unlimited Servers</li><li><i class="fas fa-check"></i> 4 GB RAM</li><li><i class="fas fa-check"></i> 10 GB Storage</li><li><i class="fas fa-check"></i> MySQL + Backups</li><li><i class="fas fa-check"></i> Custom Domain</li><li><i class="fas fa-check"></i> 24/7 Support</li></ul><a href="/signup" class="btn btn-outline">Go Unlimited</a></div>
+</div></section>
+<footer><p>&copy; 2026 <a href="/">YAMI HOSTING</a>. Free Python bot hosting for everyone. No ads. No credit card required.</p></footer>
+</body></html>
